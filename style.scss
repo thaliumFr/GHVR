@@ -1,0 +1,352 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@import "./fontawesome/scss/fontawesome.scss";
+@import "./fontawesome/scss/solid.scss";
+@import "./fontawesome/scss/brands.scss";
+
+$main: #cc0023;
+$active: #f80029;
+$black: #101010;
+$grey: #d1d1d1;
+
+$widthLimit: 750px;
+
+$padding: 15px;
+
+body,
+html {
+	padding: 0;
+	margin: 0;
+	font-family: "Ubuntu", sans-serif;
+	scroll-behavior: smooth;
+	box-sizing: border-box;
+	overflow-x: hidden;
+
+	width: 100%;
+	height: 100%;
+
+	background-color: $black;
+}
+
+.Button {
+	display: block;
+
+	border-radius: 0.5rem;
+	padding: 10px $padding;
+
+	background-color: white;
+	color: $main;
+	font-weight: bold;
+
+	text-decoration: none;
+	text-align: center;
+
+	overflow: hidden;
+
+	transition: all 0.1s ease-in-out;
+
+	&.Animated {
+		position: relative;
+		&::before {
+			content: "";
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			left: -110%;
+			top: 0;
+
+			transition: all 0.2s ease-in;
+
+			transform: skew(-20deg);
+
+			&:hover {
+				&::before {
+					left: 110%;
+				}
+			}
+		}
+	}
+
+	&.Important {
+		background-color: $main;
+		color: white;
+		border: none;
+		&::before {
+			background: linear-gradient(
+				90deg,
+				rgba(white, 0) 0%,
+				rgba(white, 0) 70%,
+				rgba(white, 0.5) 70%,
+				rgba(white, 0.5) 100%
+			);
+		}
+	}
+
+	&:hover {
+		transform: scale(1.05);
+		&.Important {
+			background-color: $active;
+		}
+		&::before {
+			left: 110%;
+		}
+	}
+
+	&.Steam {
+		&::after {
+			@extend %fa-icon;
+			@extend .fab;
+			content: fa-content($fa-var-steam);
+			padding-inline-start: $padding;
+		}
+	}
+}
+
+.phone-only {
+	@media screen and (min-width: $widthLimit) {
+		display: none !important;
+	}
+}
+
+// NAVBAR
+nav {
+	width: 100%;
+	min-height: 75px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: 1rem;
+	position: absolute;
+	background: rgba($black, 0.95);
+
+	@media screen and (max-width: $widthLimit) {
+		bottom: 0;
+		position: fixed;
+		.links-container {
+			flex-direction: column;
+		}
+	}
+
+	.logo {
+		img {
+			display: block;
+			max-height: 50px;
+			max-width: #{"max(10vw, 150px)"};
+		}
+	}
+
+	.logo-big {
+		img {
+			display: block;
+			max-height: 150px;
+			max-width: 75%;
+			margin: 0 auto;
+		}
+	}
+	.link-tab {
+		@media screen and (max-width: $widthLimit) {
+			position: absolute;
+			width: #{"max(45vw, 15em)"};
+			height: calc(100vh - 75px);
+			bottom: 100%;
+			right: 0;
+			transform: scaleX(0%);
+			transform-origin: right;
+			flex-direction: column;
+			justify-content: space-evenly;
+			text-align: center;
+			gap: 0;
+
+			background-color: rgba($black, 0.85);
+			@supports (backdrop-filter: blur(5px)) {
+				backdrop-filter: blur(5px);
+			}
+
+			transition: all 0.1s ease-in-out;
+
+			&.selected {
+				display: flex;
+				transform: scaleX(100%);
+			}
+		}
+		display: flex;
+		gap: $padding;
+		height: 100%;
+		align-items: center;
+
+		.links-container {
+			display: flex;
+			gap: $padding;
+			font-size: #{"clamp(1rem, .75rem + 25%, 2em)"};
+			text-align: center;
+
+			.link-element {
+				display: block;
+				position: relative;
+				text-decoration: none;
+				color: white;
+				height: 100%;
+				margin-inline: $padding;
+
+				transition: all 0.1s ease-in-out;
+				&:hover {
+					color: $grey;
+					transform: scale(1.05);
+				}
+				&::after {
+					content: "";
+					position: absolute;
+
+					bottom: -25%;
+
+					--underlineWidth: 125%;
+
+					left: calc((var(--underlineWidth) - 100%) / -2);
+					width: var(--underlineWidth);
+
+					min-height: 3px;
+
+					background-color: $main;
+
+					transform: scaleX(0);
+					transition: all 0.1s ease-in-out;
+				}
+				&:hover,
+				&:focus-within {
+					&::after {
+						transform: scaleX(1);
+					}
+				}
+			}
+		}
+	}
+
+	.hamburger {
+		@media screen and (min-width: $widthLimit) {
+			display: none;
+		}
+
+		--width: 30px;
+		--height: 3px;
+
+		width: var(--width);
+		height: var(--width);
+
+		position: relative;
+
+		cursor: pointer;
+
+		.lines {
+			width: var(--width);
+			height: var(--height);
+
+			background-color: white;
+			border-radius: 1rem;
+
+			top: 50%;
+
+			position: absolute;
+			transition: all 0.2s ease-in-out;
+
+			&::before {
+				content: "";
+				width: var(--width);
+				height: var(--height);
+
+				background-color: white;
+				border-radius: 1rem;
+				position: absolute;
+
+				bottom: calc(var(--width) / 2.5);
+
+				transition: all 0.2s ease-in-out;
+			}
+			&::after {
+				content: "";
+				width: var(--width);
+				height: var(--height);
+
+				background-color: white;
+				border-radius: 1rem;
+				position: absolute;
+
+				top: calc(var(--width) / 2.5);
+
+				transition: all 0.2s ease-in-out;
+			}
+		}
+
+		&:hover {
+			.lines {
+				background-color: $grey;
+				&::before {
+					background-color: $grey;
+					bottom: calc(var(--width) / 2.25);
+				}
+				&::after {
+					background-color: $grey;
+					top: calc(var(--width) / 2.25);
+				}
+			}
+		}
+
+		&.selected {
+			.lines {
+				background-color: transparent;
+				&::before {
+					top: 0;
+					transform: rotate(-45deg);
+				}
+				&::after {
+					top: 0;
+					transform: rotate(45deg);
+				}
+			}
+		}
+	}
+}
+
+header {
+	width: 100%;
+	height: 80vh;
+	min-height: 400px;
+
+	padding-block: 10vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	background: url("https://greenhellvr.com/files/dynamicContent/sites/fkmdnm/images/en/webpage_5/kx09h6gb/element_2/2020-12-08_16-07-24.jpg");
+	background-size: cover;
+	background-position: center;
+
+	.logo {
+		display: block;
+		margin: 0 auto;
+
+		padding: 10vh 10vw;
+		aspect-ratio: 5/3;
+		width: #{"min(75vw, 300px)"};
+
+		object-fit: cover;
+
+		background: url("https://greenhellvr.com/files/dynamicContent/sites/fkmdnm/images/en/webpage_5/kx09h6gb/element_3/gh_podlewa.png");
+		background-size: contain;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.mainButtons {
+		display: flex;
+		justify-content: center;
+
+		flex-wrap: wrap;
+
+		gap: 10vw;
+		padding-inline: 20px;
+		.Button {
+			font-size: calc(1.5rem + 15%);
+			min-width: calc(4.5em + 10%);
+		}
+	}
+}
