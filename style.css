@@ -6217,6 +6217,10 @@ html {
           padding-inline-start: 15px;
 }
 
+img {
+  content-visibility: auto;
+}
+
 @media screen and (min-width: 750px) {
   .phone-only {
     display: none !important;

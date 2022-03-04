@@ -101,6 +101,10 @@ html {
 	}
 }
 
+img {
+	content-visibility: auto;
+}
+
 .phone-only {
 	@media screen and (min-width: $widthLimit) {
 		display: none !important;
