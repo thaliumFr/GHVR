@@ -5,10 +5,10 @@
 
 $main: #cc0023;
 $active: #f80029;
-$black: #101010;
+$black: #0c0c0c;
 $grey: #d1d1d1;
 
-$widthLimit: 750px;
+$widthLimit: 600px;
 
 $padding: 15px;
 
@@ -20,9 +20,6 @@ html {
 	scroll-behavior: smooth;
 	box-sizing: border-box;
 	overflow-x: hidden;
-
-	width: 100%;
-	height: 100%;
 
 	background-color: $black;
 }
@@ -44,24 +41,22 @@ html {
 
 	transition: all 0.1s ease-in-out;
 
-	&.Animated {
-		position: relative;
-		&::before {
-			content: "";
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			left: -110%;
-			top: 0;
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		left: -110%;
+		top: 0;
 
-			transition: all 0.2s ease-in;
+		transition: all 0.2s ease-in;
 
-			transform: skew(-20deg);
+		transform: skew(-20deg);
 
-			&:hover {
-				&::before {
-					left: 110%;
-				}
+		&:hover {
+			&::before {
+				left: 110%;
 			}
 		}
 	}
@@ -96,13 +91,16 @@ html {
 			@extend %fa-icon;
 			@extend .fab;
 			content: fa-content($fa-var-steam);
-			padding-inline-start: $padding;
+			padding-inline-start: 5px;
 		}
 	}
 }
 
 img {
-	content-visibility: auto;
+	image-rendering: optimizeQuality;
+	@media screen and (min-width: $widthLimit) {
+		image-rendering: optimizeSpeed;
+	}
 }
 
 .phone-only {
@@ -122,6 +120,8 @@ nav {
 	position: absolute;
 	background: rgba($black, 0.95);
 
+	z-index: 1000;
+
 	@media screen and (max-width: $widthLimit) {
 		bottom: 0;
 		position: fixed;
@@ -135,6 +135,9 @@ nav {
 			display: block;
 			max-height: 50px;
 			max-width: #{"max(10vw, 150px)"};
+			@media screen and (min-width: $widthLimit) {
+				content: url("Images/Green_Hell_VR_Inline.png");
+			}
 		}
 	}
 
@@ -153,7 +156,7 @@ nav {
 			height: calc(100vh - 75px);
 			bottom: 100%;
 			right: 0;
-			transform: scaleX(0%);
+			transform: translateX(100%);
 			transform-origin: right;
 			flex-direction: column;
 			justify-content: space-evenly;
@@ -169,7 +172,7 @@ nav {
 
 			&.selected {
 				display: flex;
-				transform: scaleX(100%);
+				transform: translateX(00%);
 			}
 		}
 		display: flex;
@@ -180,7 +183,6 @@ nav {
 		.links-container {
 			display: flex;
 			gap: $padding;
-			font-size: #{"clamp(1rem, .75rem + 25%, 2em)"};
 			text-align: center;
 
 			.link-element {
@@ -189,7 +191,7 @@ nav {
 				text-decoration: none;
 				color: white;
 				height: 100%;
-				margin-inline: $padding;
+				margin-inline: 1vw;
 
 				transition: all 0.1s ease-in-out;
 				&:hover {
@@ -351,6 +353,93 @@ header {
 		.Button {
 			font-size: calc(1.5rem + 15%);
 			min-width: calc(4.5em + 10%);
+		}
+	}
+}
+
+.Content {
+	width: 100%;
+	margin-top: $padding;
+
+	section {
+		margin: $padding auto;
+
+		padding: $padding;
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed;
+
+		img {
+			max-width: 45%;
+			display: block;
+			@media screen and (max-width: $widthLimit) {
+				margin: 0 auto;
+				max-width: 80%;
+			}
+		}
+		.txt {
+			@media screen and (max-width: $widthLimit) {
+				margin: 0 auto;
+				max-width: 90%;
+				min-width: 0;
+			}
+
+			h2 {
+				color: $main;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+
+			p {
+				color: whitesmoke;
+			}
+		}
+
+		&.Description {
+			background-image: url("https://greenhellvr.com/files/dynamicContent/sites/fkmdnm/images/en/webpage_5/kx09h6gb/element_18/2021-02-16_14-39-26.png");
+			.txt {
+				margin: auto 5px;
+				max-width: 45%;
+				min-width: 40ch;
+			}
+		}
+
+		&.Story {
+			background-image: url("https://greenhellvr.com/files/dynamicContent/sites/fkmdnm/images/en/webpage_5/kx09h6gb/element_37/2021-02-16_14-42-02.png");
+			.txt {
+				margin: auto 5px;
+				max-width: 45%;
+				min-width: 40ch;
+			}
+			img {
+				transform: rotate(-10deg);
+			}
+		}
+
+		&.Basics {
+			text-align: center;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			.txt {
+				text-align: center;
+				width: 95%;
+			}
+
+			& > div {
+				max-width: 25%;
+			}
+			@media screen and (max-width: $widthLimit) {
+				& > div {
+					max-width: 90%;
+				}
+			}
 		}
 	}
 }
