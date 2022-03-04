@@ -376,20 +376,14 @@ header {
 		background-attachment: fixed;
 
 		img {
-			max-width: 45%;
 			display: block;
-			@media screen and (max-width: $widthLimit) {
-				margin: 0 auto;
-				max-width: 80%;
+			transition: all 0.1s ease-in-out;
+			&:hover {
+				transform: scale(1.05) !important;
 			}
 		}
-		.txt {
-			@media screen and (max-width: $widthLimit) {
-				margin: 0 auto;
-				max-width: 90%;
-				min-width: 0;
-			}
 
+		.txt {
 			h2 {
 				color: $main;
 				font-weight: bold;
@@ -400,23 +394,33 @@ header {
 				color: whitesmoke;
 			}
 		}
-
-		&.Description {
-			background-image: url("https://greenhellvr.com/files/dynamicContent/sites/fkmdnm/images/en/webpage_5/kx09h6gb/element_18/2021-02-16_14-39-26.png");
+		&.Description,
+		&.Story {
 			.txt {
 				margin: auto 5px;
 				max-width: 45%;
 				min-width: 40ch;
+				@media screen and (max-width: $widthLimit) {
+					margin: 0 auto;
+					max-width: 90%;
+					min-width: 0;
+				}
 			}
+			img {
+				max-width: 45%;
+				@media screen and (max-width: $widthLimit) {
+					margin: 0 auto;
+					max-width: 80%;
+				}
+			}
+		}
+
+		&.Description {
+			background-image: url("https://greenhellvr.com/files/dynamicContent/sites/fkmdnm/images/en/webpage_5/kx09h6gb/element_18/2021-02-16_14-39-26.png");
 		}
 
 		&.Story {
 			background-image: url("https://greenhellvr.com/files/dynamicContent/sites/fkmdnm/images/en/webpage_5/kx09h6gb/element_37/2021-02-16_14-42-02.png");
-			.txt {
-				margin: auto 5px;
-				max-width: 45%;
-				min-width: 40ch;
-			}
 			img {
 				transform: rotate(-10deg);
 			}
@@ -426,14 +430,20 @@ header {
 			text-align: center;
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: space-between;
+			justify-content: space-evenly;
+
+			gap: $padding;
+
 			.txt {
-				text-align: center;
 				width: 95%;
+			}
+			img {
+				margin: 0 auto;
+				width: 100%;
 			}
 
 			& > div {
-				max-width: 25%;
+				max-width: 30%;
 			}
 			@media screen and (max-width: $widthLimit) {
 				& > div {
