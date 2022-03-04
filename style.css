@@ -6208,7 +6208,7 @@ nav .logo img {
 
 @media screen and (min-width: 600px) {
   nav .logo img {
-    content: url("Images/Green_Hell_VR_Inline.png");
+    content: url("Images/Green_Hell_VR_Inline.webp");
   }
 }
 
@@ -6408,7 +6408,7 @@ header {
           flex-direction: column;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  background: url("https://greenhellvr.com/files/dynamicContent/sites/fkmdnm/images/en/webpage_5/kx09h6gb/element_2/2020-12-08_16-07-24.jpg");
+  background: url("Images/MainBG.webp");
   background-size: cover;
   background-position: center;
 }
@@ -6421,7 +6421,7 @@ header .logo {
   width: min(75vw, 300px);
   -o-object-fit: cover;
      object-fit: cover;
-  background: url("https://greenhellvr.com/files/dynamicContent/sites/fkmdnm/images/en/webpage_5/kx09h6gb/element_3/gh_podlewa.png");
+  background: url("Images/smudge.webp");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -6514,11 +6514,11 @@ header .mainButtons .Button {
 }
 
 .Content section.Description {
-  background-image: url("https://greenhellvr.com/files/dynamicContent/sites/fkmdnm/images/en/webpage_5/kx09h6gb/element_18/2021-02-16_14-39-26.png");
+  background-image: url("Images/DescBG.webp");
 }
 
 .Content section.Story {
-  background-image: url("https://greenhellvr.com/files/dynamicContent/sites/fkmdnm/images/en/webpage_5/kx09h6gb/element_37/2021-02-16_14-42-02.png");
+  background-image: url("Images/StoryBG.webp");
 }
 
 .Content section.Story img {
