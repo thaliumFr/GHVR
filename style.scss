@@ -12,16 +12,22 @@ $widthLimit: 600px;
 
 $padding: 15px;
 
+$navbarHeight: 75px;
+
 body,
 html {
 	padding: 0;
 	margin: 0;
+	height: 100%;
 	font-family: "Ubuntu", sans-serif;
 	scroll-behavior: smooth;
 	box-sizing: border-box;
 	overflow-x: hidden;
 
 	background-color: $black;
+	@media screen and (max-width: $widthLimit) {
+		scroll-snap-type: y proximity;
+	}
 }
 
 .Button {
@@ -112,7 +118,7 @@ img {
 // NAVBAR
 nav {
 	width: 100%;
-	min-height: 75px;
+	min-height: $navbarHeight;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -363,17 +369,24 @@ header {
 
 	section {
 		margin: $padding auto;
-
 		padding: $padding;
 
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-evenly;
 
+		background-color: $black;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;
+
+		position: relative;
+		overflow: hidden;
+
+		@media screen and (max-width: $widthLimit) {
+			scroll-snap-align: start;
+		}
 
 		img {
 			display: block;
@@ -384,6 +397,7 @@ header {
 		}
 
 		.txt {
+			position: relative;
 			h2 {
 				color: $main;
 				font-weight: bold;
@@ -421,6 +435,7 @@ header {
 
 		&.Story {
 			background-image: url("Images/StoryBG.webp");
+
 			img {
 				transform: rotate(-10deg);
 			}
@@ -444,6 +459,9 @@ header {
 
 			& > div {
 				max-width: 30%;
+				@media screen and (max-width: $widthLimit) {
+					scroll-snap-align: start;
+				}
 			}
 			@media screen and (max-width: $widthLimit) {
 				& > div {

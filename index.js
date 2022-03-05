@@ -16,3 +16,24 @@ function areCookiesAllowed() {
 
 	return AllowCookie;
 }
+
+// - Parallax Test -
+// let ScrollElementList = [];
+// document.onload = ScrollElementList =
+// 	document.querySelectorAll('[parallax="true"]');
+// window.addEventListener("scroll", function () {
+// 	Parallax();
+// });
+
+// function Parallax() {
+// 	console.log(window.pageYOffset);
+// 	ScrollElementList.forEach((el) => {
+// 		let speed = el.dataset.speed ? el.dataset.speed : -2;
+// 		var yPos = window.pageYOffset / speed;
+// 		yPos = -yPos;
+
+// 		var coords = "0% " + yPos + "px";
+
+// 		el.style.backgroundPosition = coords;
+// 	});
+// }
