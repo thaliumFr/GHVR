@@ -15,11 +15,11 @@ The SCSS is an easier way to write CSS files, then the SCSS file is recompiled (
 - [X] Getting >95% of [performance](https://pagespeed.web.dev/) for PC and >80% for phones
 - [x] Cross-platform (phone compatible)
 - [x] Respect the initial design
-- [ ] Split the navbar to be used anywhere
+- [X] Split the navbar to be used anywhere
 - [ ] split the CSS file to allow async loading and to also use the navbar anywhere else
 - [ ] Create Multi-resolutions images for low bandwidth
-- [ ] Finished
-- [ ] Published xD
+- [X] Finished
+- [X] Published xD
 
 I also want to use the less JS i can for peaple who don't have JS enabled.  
 *( I may have stolen ~~all the~~ some images from the official website, sorry ;P )*
